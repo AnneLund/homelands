@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { MainNav, MainHeader, Hamburger, NavLink, Menu } from "./MainNav.styled";
 import useIsOpenNavStore from "./useIsOpenNavStore";
 import { useLoginStore } from "../../../Pages/Login/useLoginStore";
 import Logo from "./Logo";
 import SearchBar from "../Searchbar/SearchBar";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
   const { isOpen, setIsOpen } = useIsOpenNavStore();
-  const [shrinkHeader] = useState(false);
   const { setLoggedIn, loggedIn } = useLoginStore();
+  const currentLocation = useLocation();
 
   return (
     <MainHeader>
-      <MainNav shrinkHeader={shrinkHeader}>
+      <MainNav>
         <Hamburger onClick={() => setIsOpen(!isOpen)}>
           <span></span>
           <span></span>
@@ -22,11 +23,15 @@ const Header = () => {
         <Logo />
         <Menu roll isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
           <li onClick={() => setIsOpen(!isOpen)}>
-            <NavLink to="/">Forside</NavLink>
+            <NavLink style={currentLocation.pathname === "/" ? { color: "#ecbe2add" } : { color: "#ffffff" }} to="/">
+              Forside
+            </NavLink>
           </li>
 
           <li onClick={() => setIsOpen(!isOpen)}>
-            <NavLink to="/boliger">Boliger til salg</NavLink>
+            <NavLink style={currentLocation.pathname === "/boliger" ? { color: "#ecbe2add" } : { color: "#ffffff" }} to="/boliger">
+              Boliger til salg
+            </NavLink>
           </li>
 
           {loggedIn ? (
@@ -40,7 +45,9 @@ const Header = () => {
             </>
           ) : (
             <li onClick={() => setIsOpen(!isOpen)}>
-              <NavLink to="/login">Login</NavLink>
+              <NavLink style={currentLocation.pathname === "/login" ? { color: "#ecbe2add" } : { color: "#ffffff" }} to="/login">
+                Login
+              </NavLink>
             </li>
           )}
           <SearchBar />

@@ -13,7 +13,7 @@ export const MainNav = styled.nav`
   height: 13vh;
   width: 100%;
   flex-wrap: wrap;
-  padding: ${(props) => (props.shrinkHeader ? "0.2rem" : "1rem")} 2rem;
+  padding: 1rem 0;
   transition: padding 500ms ease;
   position: absolute;
 
@@ -98,7 +98,8 @@ export const Hamburger = styled.div`
 
 export const NavLink = styled(Link)`
   text-decoration: none;
-  color: white;
+  font-size: 1.2em;
+  font-weight: 100;
 `;
 
 export const Menu = styled.ul`
@@ -118,5 +119,7 @@ export const Menu = styled.ul`
     position: relative;
     margin: 0;
     height: ${({ isOpen }) => (isOpen ? "90vh" : "0")};
+    top: ${({ isOpen }) => (isOpen ? "-10vh" : "0")};
+    padding-top: ${({ isOpen }) => (isOpen ? "5vh" : "0")};
   }
 `;

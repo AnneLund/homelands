@@ -4,7 +4,7 @@ import styled from "styled-components";
 const HeaderLogo = styled.div`
   position: relative;
   div {
-    background-color: ${(props) => props.theme.colors.logoColor};
+    background-color: ${(props) => props.theme.colors.logoLinkColor};
     width: 16.5vw;
     border: black 2px solid;
     position: absolute;

@@ -22,6 +22,12 @@ export const SearchBarStyled = styled.div`
       position: absolute;
       right: 0;
     }
+
+    @media screen and (max-width: ${(props) => props.theme.breakPoints.tablet.value}) {
+      justify-content: center;
+      width: 31%;
+      margin: 0 auto;
+    }
   }
 
   ul {

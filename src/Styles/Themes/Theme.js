@@ -4,7 +4,7 @@ export const Theme = {
     onBackground: "#000000",
     backgroundHeadNFoot: "#000000",
     sectionColor: "#FED9C9",
-    logoColor: "#AF7627",
+    logoLinkColor: "#AF7627",
     buttonBackground: "#000000",
     onButtonBackground: "#ffff",
   },

@@ -1,7 +1,7 @@
 import React from "react";
 import { StyledPrimary } from "./Primary.styled";
 import { Page } from "../../../Layout/Page";
-import Slider from "../../../Components/Partials/Slider";
+import Slider from "../../../Components/Partials/Slider/Slider";
 
 export const PrimaryTemplate = (props) => {
   return (
