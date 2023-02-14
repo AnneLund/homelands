@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import AppService from "../Appservices/Appservice";
 
-const useGetListItemsByEndPoint = (endpoint, key) => {
+const useGetListItemsByEndPoint = (endpoint) => {
   const [state, setState] = useState([]);
 
   useEffect(() => {
@@ -11,8 +11,8 @@ const useGetListItemsByEndPoint = (endpoint, key) => {
       //sets the data to the variable
       try {
         if (response.data) {
-          console.log("Response Data: ", response.data[key]);
-          setState(response.data[key]);
+          console.log("Response Data: ", response.data);
+          setState(response.data);
         }
       } catch (error) {
         console.error(error);

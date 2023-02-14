@@ -6,6 +6,7 @@ export const Globals = createGlobalStyle`${css`
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   }
 
   html,
@@ -19,7 +20,7 @@ export const Globals = createGlobalStyle`${css`
     min-height: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto 1fr auto;
+    grid-template-rows: auto 1fr auto;
   }
 
   img {

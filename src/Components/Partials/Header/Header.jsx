@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { MainNav, MainHeader, Hamburger, NavLink, Menu } from "./MainNav.styled";
-import { AiOutlineShoppingCart } from "react-icons/ai";
 import useIsOpenNavStore from "./useIsOpenNavStore";
 import { useLoginStore } from "../../../Pages/Login/useLoginStore";
-import TinyCart from "../../ShoppingCart/TinyCart";
+import Logo from "./Logo";
+import SearchBar from "../Searchbar/SearchBar";
 
 const Header = () => {
   const { isOpen, setIsOpen } = useIsOpenNavStore();
@@ -19,21 +19,14 @@ const Header = () => {
           <span></span>
         </Hamburger>
 
+        <Logo />
         <Menu roll isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
           <li onClick={() => setIsOpen(!isOpen)}>
             <NavLink to="/">Forside</NavLink>
           </li>
 
           <li onClick={() => setIsOpen(!isOpen)}>
-            <NavLink to="/about">Om</NavLink>
-          </li>
-
-          <li onClick={() => setIsOpen(!isOpen)}>
-            <NavLink to="/contact">Kontakt</NavLink>
-          </li>
-
-          <li onClick={() => setIsOpen(!isOpen)}>
-            <NavLink to="/products">Produkter</NavLink>
+            <NavLink to="/boliger">Boliger til salg</NavLink>
           </li>
 
           {loggedIn ? (
@@ -44,18 +37,13 @@ const Header = () => {
                 }}>
                 <button>Log ud</button>
               </li>
-              <li>
-                <NavLink to="/cart">
-                  <AiOutlineShoppingCart />
-                  <TinyCart />
-                </NavLink>
-              </li>
             </>
           ) : (
             <li onClick={() => setIsOpen(!isOpen)}>
               <NavLink to="/login">Login</NavLink>
             </li>
           )}
+          <SearchBar />
         </Menu>
       </MainNav>
     </MainHeader>

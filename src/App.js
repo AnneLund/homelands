@@ -12,7 +12,6 @@ function App() {
   return (
     <ThemeProvider theme={Theme}>
       <Header />
-      <Breadcrumbs />
       <Globals />
       <Router />
       <Flashmessages />

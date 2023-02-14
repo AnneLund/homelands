@@ -8,19 +8,15 @@ import { useModalStore } from "./useModalStore";
 //I funktionen indsættes:
 // const { setModalPayload } = useModalStore();
 
-
 //Eksempel til brug:
 //<button onClick={() => setModalPayload("I am the greatest modal")}>Show me modal</button>
-
 
 const Modal = () => {
   const { toggleModal, setToggleModal, modalPayload } = useModalStore();
 
   return (
     <ModalStyled showmodal={toggleModal}>
-      <main>
-        {modalPayload}
-      </main>
+      <main>{modalPayload}</main>
     </ModalStyled>
   );
 };

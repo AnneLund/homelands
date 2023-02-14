@@ -2,19 +2,19 @@ import React from "react";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import styled from "styled-components";
-import img1 from "../../Assets/Images/med.jpg";
-import img2 from "../../Assets/Images/reb.jpg";
-import img3 from "../../Assets/Images/se.jpg";
+import useGetListItemsByEndPoint from "../Hooks/useGetListItemsByEndPoint";
+import useGetListItemsByEndpoint from "../Hooks/useGetListItemsByEndPoint";
 
 const SliderContainer = styled.div`
   color: white;
-  width: 300px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
   overflow: hidden;
   .react-slideshow-container {
+    width: 100vw;
     button {
       margin: 1em;
       background-color: inherit;
@@ -24,9 +24,13 @@ const SliderContainer = styled.div`
         position: absolute;
       }
     }
+  }
 
+  .each-slide {
+    width: 100%;
     img {
-      aspect-ratio: 2/3;
+      aspect-ratio: 4/1;
+      width: 100%;
       object-fit: cover;
       object-position: center;
     }
@@ -38,17 +42,23 @@ const SliderContainer = styled.div`
 `;
 
 const Slider = () => {
-  const images = [img1, img2, img3];
-
+  const images = [
+    "https://api.mediehuset.net/images/homelands/medium/bedroom-2.jpg",
+    "https://api.mediehuset.net/images/homelands/medium/apartment-3.jpg",
+    "https://api.mediehuset.net/images/homelands/medium/house-5.jpg",
+  ];
+  console.log(images);
   return (
     <SliderContainer>
       <div className="slide-container">
         <Slide>
-          {images.map((slideImage, index) => (
-            <div className="each-slide" key={index}>
-              <img src={slideImage} />
-            </div>
-          ))}
+          {images.map((img, i) => {
+            return (
+              <div className="each-slide" key={i}>
+                <img src={img} />
+              </div>
+            );
+          })}
         </Slide>
       </div>
     </SliderContainer>

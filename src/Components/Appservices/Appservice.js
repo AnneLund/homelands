@@ -2,10 +2,8 @@ import Axios from "axios";
 import { URL } from "./API_URL";
 import AuthHeader from "./auth-header";
 
-const BaseURL = "bakeonline";
-
 const GetList = (e) => {
-  return Axios.get(`${URL}/${BaseURL}/${e}`, {
+  return Axios.get(`${URL}/${e}`, {
     headers: AuthHeader(),
   });
 };
@@ -17,7 +15,7 @@ const GetDetail = (e, id) => {
 };
 
 const Create = (e, data) => {
-  return Axios.post(`${URL}/${BaseURL}/${e}`, data, {
+  return Axios.post(`${URL}/${e}`, data, {
     headers: AuthHeader(),
   });
 };
@@ -29,7 +27,7 @@ const Update = async (e, id, data) => {
 };
 
 const Delete = (e, id) => {
-  return Axios.delete(`${URL}/${BaseURL}/${e}/${id}`, {
+  return Axios.delete(`${URL}/${e}/${id}`, {
     headers: AuthHeader(),
   });
 };

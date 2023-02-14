@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const All = `
-border: 1px black solid;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -34,14 +33,16 @@ export const StyledPrimary = styled.main`
     grid-template-rows: 1fr repeat(2, 0.5fr) 1fr;
     grid-template-areas:
       "A A A A"
-      "B C C C"
-      "B C C C"
+      "B B B B"
+      "C C C C"
       "D D D D";
   }
 
   > :nth-child(1) {
     grid-area: A;
     ${All};
+    position: relative;
+    z-index: 500;
   }
 
   > :nth-child(2) {

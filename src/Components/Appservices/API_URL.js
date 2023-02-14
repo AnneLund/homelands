@@ -1,1 +1,1 @@
-export const URL = "https://api.mediehuset.net";
+export const URL = "https://api.mediehuset.net/homelands";

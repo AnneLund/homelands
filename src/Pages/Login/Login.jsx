@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { useLoginStore } from "./useLoginStore";
 import useFlashMessageStore from "../../Components/FlashMessages/useFlashMessageStore";
-import { Form_Styled } from "../../Styles/Form_Styled";
+import { FormStyled } from "../../Styles/Form_Styled";
 import Transitions from "../../Styles/Transition";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Page } from "../../Layout/Page";
+import { ButtonStyled } from "../../Styles/PartialsStyled/Button_Styled";
+import { Input } from "../../Styles/PartialsStyled/InputStyled";
 
 const Login = () => {
   const { setLoggedIn, loggedIn } = useLoginStore();
   const { setFlashMessage } = useFlashMessageStore();
+  const navigate = useNavigate();
 
   const [user, setUser] = useState({
     username: "",
@@ -23,70 +26,54 @@ const Login = () => {
     });
   };
 
-  //Login funktion
-
-  const LogMeIn = async (e) => {
-    // Jeg vil forhindre at siden reloader når der trykkes på submit (default-behavior)
+  const LogMeIn = (e) => {
     e.preventDefault();
 
-    try {
-      const endPoint = "https://api.mediehuset.net/token";
-      const username = user.username;
-      const password = user.password;
-      const data = { username, password };
+    const endPoint = "https://api.mediehuset.net/token";
+    const username = user.username;
+    const password = user.password;
+    const data = { username, password };
 
-      const response = await fetch(endPoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+    fetch(endPoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === "Ok") {
+          setFlashMessage("Velkommen");
+          data.user.user_id = data.user_id;
+          setLoggedIn(true, data.user, data.username, data.access_token);
+        } else {
+          setFlashMessage("Ingen brugere med disse kriterier");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
       });
-
-      const json = await response.json();
-
-      if (json.status === "Ok") {
-        setFlashMessage("Velkommen");
-        json.user.user_id = json.user_id;
-        setLoggedIn(true, json.user, json.username, json.access_token);
-      } else {
-        setFlashMessage("Ingen brugere med disse kriterier");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
   };
-
-  // .then((response) => response.json())
-  // .then((data) => {
-  //   if (data.status === "Ok") {
-  //     setFlashMessage("Velkommen");
-  //     data.user.user_id = data.user_id;
-  //     setLoggedIn(true, data.user, data.username, data.access_token);
-  //   } else {
-  //     setFlashMessage("Ingen brugere med disse kriterier");
-  //   }
-  // })
-  // .catch((error) => {
-  //   console.error("Error:", error);
-  // });
 
   return !loggedIn ? (
     <Transitions>
-      <Page>
-        <header>
-          <h2>Log ind</h2>
-        </header>
+      <Page title="Login">
+        <h2>Login</h2>
+        <h3>Indtast dit brugernavn og adgangskode for at logge ind</h3>
 
-        <Form_Styled onSubmit={LogMeIn}>
-          <input type="text" name="username" onChange={(e) => handleChange(e)} />
-          <input type="password" name="password" onChange={(e) => handleChange(e)} />
-          <button>Log ind</button>
-        </Form_Styled>
+        <FormStyled onSubmit={LogMeIn}>
+          <Input placeholder="Brugernavn" type="text" name="username" onChange={(e) => handleChange(e)} />
+          <Input placeholder="Adgangskode" type="password" name="password" onChange={(e) => handleChange(e)} />
+          <div>
+            <ButtonStyled>Log ind</ButtonStyled>
+            <ButtonStyled>Annullér</ButtonStyled>
+          </div>
+        </FormStyled>
       </Page>
     </Transitions>
   ) : (
-    <Navigate to="/" />
+    navigate("/admin")
   );
 };
 

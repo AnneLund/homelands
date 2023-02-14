@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export const Button_Styled = styled.button`
-  padding: 0.5em;
-  color: black;
-  background-color: ${(props) => props.theme.colors.button2};
+export const ButtonStyled = styled.button`
+  padding: 0.7em 1em;
+  background-color: ${(props) => props.theme.colors.buttonBackground};
+  color: ${(props) => props.theme.colors.onButtonBackground};
   border: 1px #1f5e5b solid;
   border-radius: 5px;
 `;
@@ -11,7 +11,7 @@ export const Button_Styled = styled.button`
 export const Button_Delete = styled.button`
   padding: 0.5em;
   color: black;
-  background-color: ${(props) => props.theme.colors.button1};
+  background-color: ${(props) => props.theme.colors.onButtonBackground};
   border: 1px #1f5e5b solid;
   border-radius: 5px;
 `;

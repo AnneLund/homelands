@@ -1,15 +1,21 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import header from "../../../Assets/header.png";
 
 export const MainNav = styled.nav`
   display: flex;
-  background-color: ${(props) => props.theme.colors.background};
+  background-image: url(${header});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   z-index: 800;
-  height: 11vh;
+  font-family: "Odibee Sans", cursive;
+  height: 13vh;
+  width: 100%;
   flex-wrap: wrap;
   padding: ${(props) => (props.shrinkHeader ? "0.2rem" : "1rem")} 2rem;
   transition: padding 500ms ease;
-  position: relative;
+  position: absolute;
 
   .burger {
     overflow: hidden;
@@ -67,8 +73,6 @@ export const MainNav = styled.nav`
 export const MainHeader = styled.header`
   position: relative;
   grid-gap: 1em;
-  align-items: center;
-
   @media screen and (max-width: 1000px) {
     width: 100%;
     display: flex;
@@ -94,14 +98,12 @@ export const Hamburger = styled.div`
 
 export const NavLink = styled(Link)`
   text-decoration: none;
-  color: black;
+  color: white;
 `;
 
 export const Menu = styled.ul`
   overflow: hidden;
   display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 1.5em;
   margin-left: auto;
   margin-right: 50px;

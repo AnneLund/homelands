@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
+import create from "zustand";
+import { persist } from "zustand/middleware";
 
 export const useLoginStore = create(
   persist(
@@ -9,8 +9,8 @@ export const useLoginStore = create(
       access_token: "",
       userInfo: "",
       setLoggedIn: (loggedIn, userInfo, userName, access_token) => set((state) => ({ ...state, loggedIn, userInfo, userName, access_token })),
-      setLoggedOut: () => set(() => ({ loggedIn: false, userInfo: "", userName: "", access_token: "" })),
+      setLoggedOut: () => set(() => ({loggedIn: false, userInfo: "", userName: "", access_token: "" })),
     }),
-    { name: "user", storage: createJSONStorage(() => localStorage) }
+    { name: "user", getStorage: () => localStorage  }
   )
 );

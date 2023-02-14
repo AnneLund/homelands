@@ -1,9 +1,12 @@
 export const Theme = {
   colors: {
-    background: "#333",
-    onBackground: "#fff",
-    menu: "#eedd88",
-    onMenu: "#eedd",
+    background: "#ffff",
+    onBackground: "#000000",
+    backgroundHeadNFoot: "#000000",
+    sectionColor: "#FED9C9",
+    logoColor: "#AF7627",
+    buttonBackground: "#000000",
+    onButtonBackground: "#ffff",
   },
   breakPoints: {
     desktop: { value: "1320px", gap: "0.5em" },
