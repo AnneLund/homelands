@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const SliderContainer = styled.div`
   color: white;
-  width: 100%;
   margin-top: 2em;
   display: flex;
   flex-direction: column;
@@ -10,7 +9,6 @@ export const SliderContainer = styled.div`
   position: relative;
   overflow: hidden;
   .react-slideshow-container {
-    width: 100vw;
     position: relative;
     button {
       margin: 3em;
@@ -30,7 +28,6 @@ export const SliderContainer = styled.div`
   }
 
   .each-slide {
-    width: 100%;
     img {
       aspect-ratio: 3/1;
       width: 100%;
@@ -39,7 +36,7 @@ export const SliderContainer = styled.div`
     }
   }
 
-  @media screen and (max-width: 768px) {
-    width: 100%;
+  @media screen and (max-width: ${(props) => props.theme.breakPoints.tablet.value}) {
+    margin: 0;
   }
 `;

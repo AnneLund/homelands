@@ -21,12 +21,19 @@ export const PageContainer = styled.section`
 
     @media screen and (max-width: ${(props) => props.theme.breakPoints.tablet.value}) {
       flex-direction: column;
+      justify-content: center;
+      width: 50%;
+      margin: 0 auto;
       gap: 1em;
       input,
       select {
-        margin: 0.5em 0;
+        margin: 0.5em auto;
         width: 100%;
       }
     }
+  }
+
+  @media screen and (max-width: ${(props) => props.theme.breakPoints.tablet.value}) {
+    padding: 12em 0;
   }
 `;

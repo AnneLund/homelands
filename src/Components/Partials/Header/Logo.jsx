@@ -25,7 +25,6 @@ const HeaderLogo = styled.div`
     div {
       height: auto;
       width: 40vw;
-
       h2 {
         font-size: 9vw;
       }

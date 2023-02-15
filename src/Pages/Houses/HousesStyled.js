@@ -1,21 +1,17 @@
 import styled from "styled-components";
 
 export const HousesStyled = styled.section`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto 1fr auto;
-  grid-gap: 2em;
+  padding-top: 30vh;
 
-  @media screen and (max-width: ${(props) => props.theme.breakPoints.tablet.value}) {
-    grid-template-columns: repeat(2, 1fr);
+  header {
+    margin-bottom: 3em;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 3em;
+    div {
+      display: flex;
+      gap: 1em;
+      align-items: center;
+    }
   }
-
-  @media screen and (max-width: ${(props) => props.theme.breakPoints.mobile.value}) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-export const HouseFigure = styled.figure`
-  border: 1px solid grey;
-  height: 30vh;
 `;

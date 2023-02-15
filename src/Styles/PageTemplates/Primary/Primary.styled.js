@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
 const All = `
-display: flex;
-align-items: center;
-justify-content: center;
+width: 100%;
 
 `;
 
@@ -11,7 +9,7 @@ export const StyledPrimary = styled.main`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(2, 1fr) 4fr 1fr;
+  grid-template-rows: auto 2fr auto auto;
   grid-template-areas:
     "A"
     "B"
@@ -30,7 +28,7 @@ export const StyledPrimary = styled.main`
 
   @media all and (min-width: ${(props) => props.theme.breakPoints.desktop.value}) {
     grid-template-columns: 0.5fr repeat(3, 1fr);
-    grid-template-rows: 1fr repeat(2, 0.5fr) 1fr;
+    grid-template-rows: 1fr 0.5fr 0.1fr 1fr;
     grid-template-areas:
       "A A A A"
       "B B B B"
@@ -40,23 +38,21 @@ export const StyledPrimary = styled.main`
 
   > :nth-child(1) {
     grid-area: A;
-    ${All};
-    position: relative;
-    z-index: 500;
+    ${All}
   }
 
   > :nth-child(2) {
     grid-area: B;
-    ${All};
+    ${All}
   }
 
   > :nth-child(3) {
     grid-area: C;
-    ${All};
+    ${All}
   }
 
   > :nth-child(4) {
     grid-area: D;
-    ${All};
+    ${All}
   }
 `;

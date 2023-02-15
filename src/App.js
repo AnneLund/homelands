@@ -1,5 +1,5 @@
 import { ThemeProvider } from "styled-components";
-import Footer from "./Components/Partials/Footer";
+import Footer from "./Components/Partials/Footer/Footer";
 import Header from "./Components/Partials/Header/Header";
 import { Theme } from "./Styles/Themes/Theme";
 import Router from "./Components/Router/Router";
