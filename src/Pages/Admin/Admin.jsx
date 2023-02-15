@@ -6,7 +6,6 @@ import { ButtonStyled } from "../../Styles/PartialsStyled/Button_Styled";
 
 const Admin = () => {
   const { loggedIn, setLoggedIn, userInfo } = useLoginStore();
-  console.log(userInfo);
   return (
     <Page title="Administration">
       <AdminStyled>

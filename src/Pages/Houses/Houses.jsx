@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from "react";
 import AppService from "../../Components/Appservices/Appservice";
 import { RandomHousesStyled } from "../../Components/Partials/RandomHouses/RandomHousesStyled";
-import useGetListItemsByEndPoint from "../../Components/Hooks/useGetListItemsByEndPoint";
 import { HousesStyled } from "./HousesStyled";
+import { FiHeart } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const Houses = () => {
   const [homes, setHomes] = useState([]);
+  const [sortedHomes, setSortedHomes] = useState(homes);
+  const [fav, setFav] = useState(false);
+
+  // const { favorite, setFavorite } = useFavoriteStore();
+
+  const handleFavoriteClick = (id) => {
+    setFav(!fav);
+    // setFavorite(id);
+  };
 
   useEffect(() => {
     const renderHomes = async () => {
@@ -21,8 +31,6 @@ const Houses = () => {
 
     renderHomes();
   }, []);
-
-  const [sortedHomes, setSortedHomes] = useState(homes);
 
   const handleSort = (event) => {
     const value = event.target.value;
@@ -63,7 +71,7 @@ const Houses = () => {
     }
   };
 
-  console.log(sortedHomes);
+  // console.log(sortedHomes);
 
   return (
     <HousesStyled>
@@ -98,16 +106,23 @@ const Houses = () => {
           display: "flex",
           flexWrap: "wrap",
         }}>
-        {sortedHomes.map((home, i) => {
+        {sortedHomes.map((home) => {
           const background = energyLabelColors[home.energy_label_name] || "transparent";
-
           return (
-            <figure key={i}>
-              <picture>
-                <img src={home.images[1].filename.medium} alt={home.description} />
-              </picture>
+            <figure key={home.id}>
+              <Link to={`/boliger/${home.id}`}>
+                <picture>
+                  <img src={home.images[1].filename.medium} alt={home.description} />
+                </picture>
+              </Link>
+
               <figcaption>
-                <h3>{home.address}</h3>
+                <h3>
+                  {home.address}
+                  <span>
+                    <FiHeart onClick={() => handleFavoriteClick(home.id)} style={fav ? { fill: "red" } : null} size={20} />
+                  </span>
+                </h3>
                 <p>
                   {home.zipcode} {home.city}
                 </p>

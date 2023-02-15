@@ -14,4 +14,17 @@ export const HousesStyled = styled.section`
       align-items: center;
     }
   }
+
+  h3 {
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      cursor: pointer;
+    }
+  }
+
+  figure {
+    cursor: pointer;
+  }
 `;
