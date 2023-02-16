@@ -9,6 +9,7 @@ import { FiHeart } from "react-icons/fi";
 import { TbMapSearch } from "react-icons/tb";
 import Gallery from "./Gallery";
 import Transitions from "../../Styles/Transition";
+import Plan from "./Plan";
 
 const HouseDetails = () => {
   const { id } = useParams();
@@ -16,6 +17,10 @@ const HouseDetails = () => {
 
   const showGallery = () => {
     setModalPayload(<Gallery images={homes.item.images} />);
+  };
+
+  const showPlan = () => {
+    setModalPayload(<Plan />);
   };
 
   const { setModalPayload } = useModalStore();
@@ -51,7 +56,11 @@ const HouseDetails = () => {
                   </span>
 
                   <ImLocation2 size={30} />
-                  <TbMapSearch size={30} />
+                  <span onClick={showPlan}>
+                    {" "}
+                    <TbMapSearch size={30} />
+                  </span>
+
                   <FiHeart size={30} />
                 </div>
 

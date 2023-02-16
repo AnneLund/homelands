@@ -8,16 +8,6 @@ export const ButtonStyled = styled.button`
   border-radius: 5px;
 `;
 
-export const CloseButton = styled.button`
-  position: absolute;
-  right: -3em;
-  background-color: inherit;
-  border: none;
-  font-size: 1.5em;
-  color: white;
-  top: 0;
-`;
-
 export const Button = styled.button`
   border: none;
 `;

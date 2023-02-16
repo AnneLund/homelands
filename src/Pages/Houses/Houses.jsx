@@ -3,19 +3,21 @@ import AppService from "../../Components/Appservices/Appservice";
 import { RandomHousesStyled } from "../../Components/Partials/RandomHouses/RandomHousesStyled";
 import { HousesStyled } from "./HousesStyled";
 import { FiHeart } from "react-icons/fi";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { useModalStore } from "../../Components/Modal/useModalStore";
+import useFlashMessageStore from "../../Components/FlashMessages/useFlashMessageStore";
+import { useLoginStore } from "../Login/useLoginStore";
 
 const Houses = () => {
   const [homes, setHomes] = useState([]);
   const [sortedHomes, setSortedHomes] = useState(homes);
-  const [fav, setFav] = useState(false);
-
-  // const { favorite, setFavorite } = useFavoriteStore();
-
-  const handleFavoriteClick = (id) => {
-    setFav(!fav);
-    // setFavorite(id);
-  };
+  const [fav, setFav] = useState([]);
+  const [like, setLike] = useState(false);
+  const { setToggleModal } = useModalStore();
+  const { setFlashMessage } = useFlashMessageStore();
+  const { reset } = useForm();
+  const { userInfo } = useLoginStore();
 
   useEffect(() => {
     const renderHomes = async () => {
@@ -71,7 +73,26 @@ const Houses = () => {
     }
   };
 
-  // console.log(sortedHomes);
+  const handleFavoriteClick = async (data) => {
+    const postData = {
+      user_id: userInfo.user_id,
+      home_id: data,
+    };
+
+    try {
+      const response = await AppService.Create("favorites", postData);
+      if (response.status) {
+        setFav(response.data.new_id);
+        setFlashMessage("Tilføjet din favorit-liste!");
+        setTimeout(() => {
+          setToggleModal("none");
+        }, 2000);
+        reset();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <HousesStyled>
@@ -120,7 +141,7 @@ const Houses = () => {
                 <h3>
                   {home.address}
                   <span>
-                    <FiHeart onClick={() => handleFavoriteClick(home.id)} style={fav ? { fill: "red" } : null} size={20} />
+                    <FiHeart onClick={() => handleFavoriteClick(home.id)} size={20} />
                   </span>
                 </h3>
                 <p>

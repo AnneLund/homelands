@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import AppService from "../../../Components/Appservices/Appservice";
-import styled from "styled-components";
 import { useLoginStore } from "../../../Pages/Login/useLoginStore";
 import { ButtonStyled } from "../../../Styles/PartialsStyled/Button_Styled";
 import { AdminStyled } from "../AdminStyled";
 import Transitions from "../../../Styles/Transition";
+import { useNavigate } from "react-router-dom";
 
 const Comments = ({ reviewID }) => {
   const { userInfo, loggedIn, setLoggedIn } = useLoginStore();
   const [comments, setComments] = useState([]);
   const [deleted, setDeleted] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const renderComments = async () => {
@@ -75,6 +76,7 @@ const Comments = ({ reviewID }) => {
             <li
               onClick={() => {
                 setLoggedIn(false, "", "", "");
+                navigate("/login");
               }}>
               <ButtonStyled>Log ud</ButtonStyled>
             </li>

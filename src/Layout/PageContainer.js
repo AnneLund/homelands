@@ -36,4 +36,9 @@ export const PageContainer = styled.section`
   @media screen and (max-width: ${(props) => props.theme.breakPoints.tablet.value}) {
     padding: 12em 0;
   }
+
+  .buttonContainer {
+    display: flex;
+    gap: 1em;
+  }
 `;

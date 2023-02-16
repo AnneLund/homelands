@@ -4,12 +4,13 @@ import useIsOpenNavStore from "./useIsOpenNavStore";
 import { useLoginStore } from "../../../Pages/Login/useLoginStore";
 import Logo from "./Logo";
 import SearchBar from "../Searchbar/SearchBar";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const { isOpen, setIsOpen } = useIsOpenNavStore();
   const { setLoggedIn, loggedIn } = useLoginStore();
   const currentLocation = useLocation();
+  const navigate = useNavigate();
 
   return (
     <MainHeader>
@@ -38,9 +39,10 @@ const Header = () => {
             <>
               <li
                 onClick={() => {
-                  setLoggedIn(false, "", "", "");
+                  // setLoggedIn(false, "", "", "");
+                  navigate("/admin");
                 }}>
-                <button>Log ud</button>
+                <button>Min side</button>
               </li>
             </>
           ) : (
