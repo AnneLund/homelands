@@ -11,7 +11,7 @@ const useGetListItemsByEndPoint = (endpoint) => {
       //sets the data to the variable
       try {
         if (response.data) {
-          console.log("Response Data: ", response.data);
+          // console.log("Response Data: ", response.data);
           setState(response.data);
         }
       } catch (error) {

@@ -23,4 +23,8 @@ export const MyFavorites = styled.article`
   img {
     width: 20%;
   }
+
+  button {
+    padding: 0.5em;
+  }
 `;

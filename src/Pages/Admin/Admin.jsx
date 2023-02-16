@@ -1,6 +1,6 @@
 import { Page } from "../../Layout/Page";
 import { useLoginStore } from "../Login/useLoginStore";
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import Appservice from "../../Components/Appservices/Appservice";
 import Comments from "./Comments/Comments";
@@ -9,26 +9,39 @@ import { useParams } from "react-router-dom";
 import { useModalStore } from "../../Components/Modal/useModalStore";
 import { ButtonStyled } from "../../Styles/PartialsStyled/Button_Styled";
 import { SendReview } from "./SendReview";
-import { AiOutlineClose } from "react-icons/ai";
 import { MyFavorites } from "./MyFavorites";
-import useGetListItemsByEndpoint from "../../Components/Hooks/useGetListItemsByEndPoint";
 import useFlashMessageStore from "../../Components/FlashMessages/useFlashMessageStore";
 import AppService from "../../Components/Appservices/Appservice";
 
 const Admin = () => {
   const { userInfo } = useLoginStore();
   const [reviewID, setReviewID] = useState(1);
-  const { state: favorites } = useGetListItemsByEndpoint("favorites");
   const { id } = useParams();
   const { setModalPayload, setToggleModal } = useModalStore();
   const { setFlashMessage } = useFlashMessageStore();
-  const [setDeleted] = useState(false);
+  const [deleted, setDeleted] = useState(false);
+  const [favorites, setFavorites] = useState([]);
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
+
+  useMemo(() => {
+    const renderFavorites = async () => {
+      try {
+        const response = await AppService.GetList("favorites");
+        if (response.data) {
+          setFavorites(response.data.items);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    renderFavorites();
+  }, [deleted]);
 
   const onSubmit = async (data) => {
     const postData = {
@@ -62,7 +75,6 @@ const Admin = () => {
             onClick={() =>
               setModalPayload(
                 <SendReview>
-                  <AiOutlineClose onClick={() => setToggleModal("none")} className="close" size={25} />
                   <h2>Skriv en ny anmeldelse</h2>
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <input type="hidden" {...register("id")} value={reviewID} />
@@ -83,28 +95,34 @@ const Admin = () => {
             onClick={() =>
               setModalPayload(
                 <MyFavorites>
-                  <AiOutlineClose onClick={() => setToggleModal("none")} className="close" size={25} />
                   <h2>Din favoritliste</h2>
                   <ul>
-                    {favorites?.items?.map((fav, i) => (
-                      <li key={i}>
-                        <figure>
-                          <figcaption>
-                            <p>{fav.address}</p>
-                          </figcaption>
-                          <img src={fav.images[0].filename.medium} alt={fav.address} />
-                          <button
-                            className="delete"
-                            value={fav.home_id}
-                            onClick={() => {
-                              AppService.Delete("favorites", fav.home_id);
-                              setDeleted((prevDeleted) => !prevDeleted);
-                            }}>
-                            Slet
-                          </button>
-                        </figure>
-                      </li>
-                    ))}
+                    {favorites > [0] ? (
+                      <>
+                        {favorites.map((fav, i) => (
+                          <li key={i}>
+                            <figure>
+                              <figcaption>
+                                <p>{fav.address}</p>
+                              </figcaption>
+                              <img src={fav.images[0].filename.medium} alt={fav.address} />
+                              <button
+                                className="delete"
+                                value={fav.home_id}
+                                onClick={() => {
+                                  AppService.Delete("favorites", fav.home_id);
+                                  setDeleted((prevDeleted) => !prevDeleted);
+                                  setFlashMessage(`${fav.address} er nu fjernet fra dine favoritter!`);
+                                }}>
+                                Slet
+                              </button>
+                            </figure>
+                          </li>
+                        ))}
+                      </>
+                    ) : (
+                      <p>Du har endnu ikke tilføjet nogle favoritter..</p>
+                    )}
                   </ul>
                 </MyFavorites>
               )

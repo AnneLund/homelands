@@ -20,4 +20,23 @@ export const ModalStyled = styled.div`
       opacity: 100%;
     }
   }
+
+  .close {
+    float: right;
+    background-color: none;
+    border: none;
+    color: white;
+    position: absolute;
+    right: 25%;
+    top: 18%;
+  }
+
+  main {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    position: fixed;
+    top: 25%;
+    z-index: 2;
+  }
 `;

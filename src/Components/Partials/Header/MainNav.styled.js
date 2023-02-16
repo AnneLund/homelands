@@ -67,6 +67,7 @@ export const MainNav = styled.nav`
     width: 100%;
     display: flex;
     flex-direction: flex-end;
+    background-color: black;
   }
 `;
 
@@ -112,6 +113,7 @@ export const Menu = styled.ul`
   @media (max-width: ${(props) => props.theme.breakPoints.tablet.value}) {
     flex-direction: column;
     align-items: center;
+    background-color: #0000006c;
     transition: 300ms ease-in;
     width: 100%;
     backdrop-filter: blur(20px);

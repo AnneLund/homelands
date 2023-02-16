@@ -5,9 +5,10 @@ export const Flashmessage = styled.span`
     display: block;
     position: fixed;
     z-index: 1200;
-    background-color: #15568495;
+    background-color: black;
     top: 30%;
     left: 50%;
+    text-align: center;
     transform: translateX(-50%);
     animation: floatingAlert ease-in ${(props) => props.flashDuration}ms forwards;
     animation-fill-mode: forwards;
@@ -17,12 +18,11 @@ export const Flashmessage = styled.span`
     border-radius: 5px;
     font-weight: 900;
     text-transform: uppercase;
-  
 
-  &:last-of-type {
-    display: block;
+    &:last-of-type {
+      display: block;
+    }
   }
-}
 
   @keyframes floatingAlert {
     0% {
