@@ -26,26 +26,34 @@ export const Details = styled.section`
         justify-content: space-between;
         width: 200px;
       }
+
+      @media screen and (max-width: ${(props) => props.theme.breakPoints.tablet.value}) {
+        flex-direction: column;
+      }
     }
 
     .artDetails {
-      padding: 2em;
+      padding-top: 2em;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
+
       figure {
         display: flex;
-        justify-content: space-between;
         div {
           display: flex;
+          width: 50%;
+          margin: 0 2.5vw;
           flex-direction: column;
-          p {
-            margin-right: 5em;
-          }
+        }
+
+        @media screen and (max-width: ${(props) => props.theme.breakPoints.tablet.value}) {
+          justify-content: center;
         }
       }
 
       @media screen and (max-width: ${(props) => props.theme.breakPoints.tablet.value}) {
         flex-direction: column;
+        justify-content: center;
       }
     }
 
@@ -73,6 +81,20 @@ export const Details = styled.section`
           }
         }
       }
+
+      @media screen and (max-width: ${(props) => props.theme.breakPoints.tablet.value}) {
+        flex-direction: column;
+        justify-content: space-between;
+        div {
+          width: 100%;
+          margin-bottom: 1em;
+        }
+      }
+    }
+    @media screen and (max-width: ${(props) => props.theme.breakPoints.tablet.value}) {
+      top: 0;
+      width: 100%;
+      margin: 1em auto;
     }
   }
 `;

@@ -7,10 +7,15 @@ import { AiFillCamera } from "react-icons/ai";
 import { ImLocation2 } from "react-icons/im";
 import { FiHeart } from "react-icons/fi";
 import { TbMapSearch } from "react-icons/tb";
+import Gallery from "./Gallery";
 
 const HouseDetails = () => {
   const { id } = useParams();
   const { state: homes } = useGetListItemsByEndPoint("homes/" + id);
+
+  const showGallery = () => {
+    setModalPayload(<Gallery images={homes.item.images} />);
+  };
 
   const { setModalPayload } = useModalStore();
 
@@ -41,8 +46,7 @@ const HouseDetails = () => {
                 </div>
 
                 <div className="icons">
-                  <span>
-                    {" "}
+                  <span onClick={showGallery}>
                     <AiFillCamera size={30} />
                   </span>
 
@@ -50,6 +54,7 @@ const HouseDetails = () => {
                   <TbMapSearch size={30} />
                   <FiHeart size={30} />
                 </div>
+
                 <div>
                   <p>Kontantpris: {homes.item.price}</p>
                   <p>Udbetaling: {homes.item.payout}</p>
