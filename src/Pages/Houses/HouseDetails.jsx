@@ -8,6 +8,7 @@ import { ImLocation2 } from "react-icons/im";
 import { FiHeart } from "react-icons/fi";
 import { TbMapSearch } from "react-icons/tb";
 import Gallery from "./Gallery";
+import Transitions from "../../Styles/Transition";
 
 const HouseDetails = () => {
   const { id } = useParams();
@@ -19,9 +20,8 @@ const HouseDetails = () => {
 
   const { setModalPayload } = useModalStore();
 
-  // onClick={() => setModalPayload(<HouseDetails home={{ home }} />)}
   return (
-    <>
+    <Transitions>
       {homes && homes.item ? (
         <>
           <DetailsHeader
@@ -137,7 +137,7 @@ const HouseDetails = () => {
       ) : (
         <p>Kunne ikke indlæse data</p>
       )}
-    </>
+    </Transitions>
   );
 };
 

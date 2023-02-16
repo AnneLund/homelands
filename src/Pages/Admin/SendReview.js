@@ -23,14 +23,4 @@ export const SendReview = styled.article`
       margin: 0 auto;
     }
   }
-
-  .close {
-    position: absolute;
-    right: 0;
-    top: 0;
-    background-color: none;
-    border: none;
-    color: white;
-    margin: 0.5em;
-  }
 `;

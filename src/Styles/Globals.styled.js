@@ -27,4 +27,14 @@ export const Globals = createGlobalStyle`${css`
     width: 100%;
     display: block;
   }
+
+  .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: none;
+    border: none;
+    color: white;
+    margin: 0.5em;
+  }
 `}`;

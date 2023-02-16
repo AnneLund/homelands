@@ -3,7 +3,24 @@ import { useModalStore } from "../../Components/Modal/useModalStore";
 import styled from "styled-components";
 import { GrFormPrevious } from "react-icons/gr";
 import { GrFormNext } from "react-icons/gr";
-import { Button, CloseButton } from "../../Styles/PartialsStyled/Button_Styled";
+import { Button } from "../../Styles/PartialsStyled/Button_Styled";
+import { AiOutlineClose } from "react-icons/ai";
+
+const ModalGallery = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 7em;
+
+  .close {
+    right: -15em;
+  }
+
+  img {
+    width: 700px;
+  }
+`;
 
 const Gallery = ({ images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -20,8 +37,9 @@ const Gallery = ({ images }) => {
   };
 
   return (
-    <div>
-      <CloseButton onClick={() => setToggleModal("none")}>X</CloseButton>
+    <ModalGallery>
+      <AiOutlineClose className="close" onClick={() => setToggleModal("none")} size={30} />
+
       <Button onClick={previousImage}>
         <GrFormPrevious size={30} />
       </Button>
@@ -29,7 +47,7 @@ const Gallery = ({ images }) => {
       <Button onClick={nextImage}>
         <GrFormNext size={30} />
       </Button>
-    </div>
+    </ModalGallery>
   );
 };
 

@@ -7,7 +7,6 @@ export const AdminStyled = styled.section`
   height: 100%;
   article {
     width: 100%;
-    padding: 0 1em;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 0.1fr);
@@ -48,10 +47,12 @@ export const AdminStyled = styled.section`
 
       .red {
         color: green;
+        cursor: pointer;
       }
 
       .delete {
         color: red;
+        cursor: pointer;
       }
     }
 

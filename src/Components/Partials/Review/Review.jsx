@@ -4,7 +4,6 @@ import useGetListItemsByEndPoint from "../../Hooks/useGetListItemsByEndPoint";
 
 const Review = () => {
   const { state: reviews } = useGetListItemsByEndPoint("reviews");
-
   const [randomReviews, setRandomReviews] = useState([]);
 
   //Jeg tjekker om homes og homes.items eksisterer, inden jeg tilgår det.
@@ -17,7 +16,6 @@ const Review = () => {
     }
   }, [reviews]);
 
-  console.log(randomReviews);
   return (
     <CustomerReview>
       <h3>Det siger kunderne:</h3>
