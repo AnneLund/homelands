@@ -17,7 +17,7 @@ const Slider = () => {
           {images.map((img, i) => {
             return (
               <div className="each-slide" key={i}>
-                <img src={img} />
+                <img src={img} alt="" />
               </div>
             );
           })}

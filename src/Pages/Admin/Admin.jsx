@@ -22,7 +22,7 @@ const Admin = () => {
   const { id } = useParams();
   const { setModalPayload, setToggleModal } = useModalStore();
   const { setFlashMessage } = useFlashMessageStore();
-  const [deleted, setDeleted] = useState(false);
+  const [setDeleted] = useState(false);
   const {
     register,
     handleSubmit,
@@ -52,8 +52,6 @@ const Admin = () => {
       console.error(error);
     }
   };
-
-  console.log(favorites);
 
   return (
     <Transitions>

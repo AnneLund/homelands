@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const { isOpen, setIsOpen } = useIsOpenNavStore();
-  const { setLoggedIn, loggedIn } = useLoginStore();
+  const { loggedIn } = useLoginStore();
   const currentLocation = useLocation();
   const navigate = useNavigate();
 
@@ -39,7 +39,6 @@ const Header = () => {
             <>
               <li
                 onClick={() => {
-                  // setLoggedIn(false, "", "", "");
                   navigate("/admin");
                 }}>
                 <button>Min side</button>

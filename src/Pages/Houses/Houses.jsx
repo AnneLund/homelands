@@ -12,8 +12,7 @@ import { useLoginStore } from "../Login/useLoginStore";
 const Houses = () => {
   const [homes, setHomes] = useState([]);
   const [sortedHomes, setSortedHomes] = useState(homes);
-  const [fav, setFav] = useState([]);
-  const [like, setLike] = useState(false);
+  const [setFav] = useState([]);
   const { setToggleModal } = useModalStore();
   const { setFlashMessage } = useFlashMessageStore();
   const { reset } = useForm();

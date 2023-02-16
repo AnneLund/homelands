@@ -26,7 +26,7 @@ const Gallery = ({ images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { setToggleModal } = useModalStore();
 
-  const slideImages = images.map((img, i) => img.filename.medium);
+  const slideImages = images.map((img) => img.filename.medium);
 
   const previousImage = () => {
     setCurrentImageIndex((currentImageIndex - 1 + slideImages.length) % slideImages.length);
@@ -43,7 +43,7 @@ const Gallery = ({ images }) => {
       <Button onClick={previousImage}>
         <GrFormPrevious size={30} />
       </Button>
-      <img src={slideImages[currentImageIndex]} />
+      <img src={slideImages[currentImageIndex]} alt={slideImages.address} />
       <Button onClick={nextImage}>
         <GrFormNext size={30} />
       </Button>

@@ -57,7 +57,6 @@ const HouseDetails = () => {
 
                   <ImLocation2 size={30} />
                   <span onClick={showPlan}>
-                    {" "}
                     <TbMapSearch size={30} />
                   </span>
 
