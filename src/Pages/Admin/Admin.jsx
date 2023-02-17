@@ -19,7 +19,6 @@ const Admin = () => {
   const { id } = useParams();
   const { setModalPayload, setToggleModal } = useModalStore();
   const { setFlashMessage } = useFlashMessageStore();
-  const [deleted, setDeleted] = useState(false);
   const [favorites, setFavorites] = useState([]);
   const {
     register,
@@ -43,10 +42,14 @@ const Admin = () => {
     renderFavorites();
   }, []);
 
-  const handleDeleteClick = (homeId, address) => {
-    AppService.Delete("favorites", homeId);
-    setDeleted((deleted) => !deleted);
-    setFlashMessage(`${address} er nu fjernet fra dine favoritter!`);
+  const handleDeleteClick = async (homeId, address) => {
+    const response = await AppService.Delete("favorites", homeId);
+    if (response.data) {
+      setFlashMessage(`${address} er nu fjernet fra dine favoritter!`);
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    }
   };
 
   const onSubmit = async (data) => {
