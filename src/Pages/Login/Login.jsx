@@ -3,16 +3,14 @@ import { useLoginStore } from "./useLoginStore";
 import useFlashMessageStore from "../../Components/FlashMessages/useFlashMessageStore";
 import { FormStyled } from "../../Styles/Form_Styled";
 import Transitions from "../../Styles/Transition";
-import { useNavigate } from "react-router-dom";
 import { Page } from "../../Layout/Page";
 import { ButtonStyled } from "../../Styles/PartialsStyled/Button_Styled";
 import { Input } from "../../Styles/PartialsStyled/InputStyled";
+import Admin from "../Admin/Admin";
 
 const Login = () => {
   const { setLoggedIn, loggedIn } = useLoginStore();
   const { setFlashMessage } = useFlashMessageStore();
-  const navigate = useNavigate();
-
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -73,7 +71,7 @@ const Login = () => {
       </Page>
     </Transitions>
   ) : (
-    navigate("/admin")
+    <Admin />
   );
 };
 

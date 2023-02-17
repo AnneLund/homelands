@@ -19,7 +19,7 @@ const Admin = () => {
   const { id } = useParams();
   const { setModalPayload, setToggleModal } = useModalStore();
   const { setFlashMessage } = useFlashMessageStore();
-  const [setDeleted] = useState(false);
+  const [deleted, setDeleted] = useState(false);
   const [favorites, setFavorites] = useState([]);
   const {
     register,
@@ -42,6 +42,12 @@ const Admin = () => {
 
     renderFavorites();
   }, []);
+
+  const handleDeleteClick = (homeId, address) => {
+    AppService.Delete("favorites", homeId);
+    setDeleted((deleted) => !deleted);
+    setFlashMessage(`${address} er nu fjernet fra dine favoritter!`);
+  };
 
   const onSubmit = async (data) => {
     const postData = {
@@ -106,14 +112,7 @@ const Admin = () => {
                                 <p>{fav.address}</p>
                               </figcaption>
                               <img src={fav.images[0].filename.medium} alt={fav.address} />
-                              <button
-                                className="delete"
-                                value={fav.home_id}
-                                onClick={() => {
-                                  AppService.Delete("favorites", fav.home_id);
-                                  setDeleted((prevDeleted) => !prevDeleted);
-                                  setFlashMessage(`${fav.address} er nu fjernet fra dine favoritter!`);
-                                }}>
+                              <button className="delete" value={fav.home_id} onClick={() => handleDeleteClick(fav.home_id, fav.address)}>
                                 Slet
                               </button>
                             </figure>

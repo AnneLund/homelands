@@ -4,13 +4,12 @@ import useIsOpenNavStore from "./useIsOpenNavStore";
 import { useLoginStore } from "../../../Pages/Login/useLoginStore";
 import Logo from "./Logo";
 import SearchBar from "../Searchbar/SearchBar";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
   const { isOpen, setIsOpen } = useIsOpenNavStore();
   const { loggedIn } = useLoginStore();
   const currentLocation = useLocation();
-  const navigate = useNavigate();
 
   return (
     <MainHeader>
@@ -37,11 +36,11 @@ const Header = () => {
 
           {loggedIn ? (
             <>
-              <li
-                onClick={() => {
-                  navigate("/admin");
-                }}>
-                <button>Min side</button>
+              <li onClick={() => setIsOpen(!isOpen)}>
+                <NavLink to="/admin" style={currentLocation.pathname === "/admin" ? { color: "#ecbe2add" } : { color: "#ffffff" }}>
+                  {" "}
+                  Min side
+                </NavLink>
               </li>
             </>
           ) : (
