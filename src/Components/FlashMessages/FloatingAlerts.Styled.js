@@ -5,7 +5,7 @@ export const Flashmessage = styled.span`
     display: block;
     position: fixed;
     z-index: 1200;
-    background-color: black;
+    background-color: ${(props) => props.theme.colors.logoLinkColor};
     top: 30%;
     left: 50%;
     text-align: center;

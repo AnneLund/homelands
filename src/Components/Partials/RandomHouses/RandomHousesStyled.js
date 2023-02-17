@@ -12,6 +12,7 @@ export const RandomHousesStyled = styled.section`
     padding: 1em;
     background-color: #fff7;
     border-radius: 5px;
+    box-shadow: black 2px 2px 10px;
 
     picture {
       width: 100%;

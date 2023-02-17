@@ -14,6 +14,12 @@ const GetDetail = (e, id) => {
   });
 };
 
+const Patch = (e, data) => {
+  return Axios.patch(`${URL}/${e}`, data, {
+    headers: AuthHeader(),
+  });
+};
+
 const Create = (e, data) => {
   return Axios.post(`${URL}/${e}`, data, {
     headers: AuthHeader(),
@@ -35,6 +41,7 @@ const Delete = (e, id) => {
 const AppService = {
   GetList,
   GetDetail,
+  Patch,
   Create,
   Update,
   Delete,

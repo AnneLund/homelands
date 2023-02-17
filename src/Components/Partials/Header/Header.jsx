@@ -24,14 +24,14 @@ const Header = () => {
         <Logo />
         <Menu roll isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
           <li onClick={() => setIsOpen(!isOpen)}>
-            <NavLink style={currentLocation.pathname === "/" ? { color: "#ecbe2add" } : { color: "#ffffff" }} to="/">
-              Forside
+            <NavLink style={currentLocation.pathname === "/" ? { color: "#AF7627" } : { color: "#ffffff" }} to="/">
+              <p>Forside</p>
             </NavLink>
           </li>
 
           <li onClick={() => setIsOpen(!isOpen)}>
-            <NavLink style={currentLocation.pathname === "/boliger" ? { color: "#ecbe2add" } : { color: "#ffffff" }} to="/boliger">
-              Boliger til salg
+            <NavLink style={currentLocation.pathname === "/boliger" ? { color: "#AF7627" } : { color: "#ffffff" }} to="/boliger">
+              <p>Boliger til salg</p>
             </NavLink>
           </li>
 

@@ -6,6 +6,10 @@ export const ButtonStyled = styled.button`
   color: ${(props) => props.theme.colors.onButtonBackground};
   border: 1px #1f5e5b solid;
   border-radius: 5px;
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.logoLinkColor};
+  }
 `;
 
 export const Button = styled.button`

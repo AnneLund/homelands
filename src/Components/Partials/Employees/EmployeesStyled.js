@@ -23,6 +23,7 @@ export const EmployeesStyled = styled.section`
       width: 300px;
       border: black solid 1px;
       position: relative;
+      box-shadow: black 2px 2px 10px;
 
       img {
         width: 100%;

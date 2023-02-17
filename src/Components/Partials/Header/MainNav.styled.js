@@ -46,8 +46,14 @@ export const MainNav = styled.nav`
     background-color: ${(props) => props.theme.colors.button2};
     border: 1px #1f5e5b solid;
     border-radius: 5px;
+    cursor: pointer;
     a {
       color: black;
+    }
+
+    &:hover {
+      background-color: ${(props) => props.theme.colors.logoLinkColor};
+      transition: 500ms ease-in-out;
     }
   }
 
@@ -101,11 +107,18 @@ export const NavLink = styled(Link)`
   text-decoration: none;
   font-size: 1.2em;
   font-weight: 100;
+  p {
+    &:hover {
+      transition: 500ms ease-in-out;
+      color: ${(props) => props.theme.colors.logoLinkColor};
+    }
+  }
 `;
 
 export const Menu = styled.ul`
   overflow: hidden;
   display: flex;
+  align-items: center;
   gap: 1.5em;
   margin-left: auto;
   margin-right: 50px;

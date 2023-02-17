@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const HousesStyled = styled.section`
   padding-top: 30vh;
+  margin-bottom: 2em;
 
   header {
     margin-bottom: 3em;
@@ -26,5 +27,6 @@ export const HousesStyled = styled.section`
 
   figure {
     cursor: pointer;
+    height: fit-content;
   }
 `;

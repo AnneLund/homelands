@@ -7,12 +7,14 @@ const HeaderLogo = styled.div`
     background-color: ${(props) => props.theme.colors.logoLinkColor};
     width: 16.5vw;
     border: black 2px solid;
+    box-shadow: black 1px 1px 1px;
     position: absolute;
     top: 20px;
     z-index: -1;
     padding: 0.1em 0.5em;
     h2 {
       color: white;
+      text-shadow: black 2px 2px 2px;
       font-weight: 100;
       font-size: 4vw;
     }

@@ -16,6 +16,7 @@ export const CustomerReview = styled.article`
 
   blockquote {
     background-color: ${(props) => props.theme.colors.sectionColor};
+    box-shadow: grey 2px 2px 10px;
     padding: 2em;
     grid-area: B;
 

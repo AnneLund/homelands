@@ -1,6 +1,6 @@
 import { Page } from "../../Layout/Page";
 import { useLoginStore } from "../Login/useLoginStore";
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import Appservice from "../../Components/Appservices/Appservice";
 import Comments from "./Comments/Comments";
@@ -19,7 +19,7 @@ const Admin = () => {
   const { id } = useParams();
   const { setModalPayload, setToggleModal } = useModalStore();
   const { setFlashMessage } = useFlashMessageStore();
-  const [deleted, setDeleted] = useState(false);
+  const [setDeleted] = useState(false);
   const [favorites, setFavorites] = useState([]);
   const {
     register,
@@ -41,7 +41,7 @@ const Admin = () => {
     };
 
     renderFavorites();
-  }, [deleted]);
+  }, []);
 
   const onSubmit = async (data) => {
     const postData = {

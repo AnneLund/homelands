@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import AppService from "../../Appservices/Appservice";
 import useGetListItemsByEndPoint from "../../Hooks/useGetListItemsByEndPoint";
 import { RandomHousesStyled } from "./RandomHousesStyled";
 
@@ -26,6 +28,14 @@ const RandomHouses = () => {
     G: "purple",
   };
 
+  const handleUpdateClick = async (id) => {
+    try {
+      await AppService.Patch(`homes/${id}`, { num_clicks: 1 });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <RandomHousesStyled>
       {randomHomes?.map((home, i) => {
@@ -33,9 +43,11 @@ const RandomHouses = () => {
 
         return (
           <figure key={i}>
-            <picture>
-              <img src={home.images[1].filename.medium} alt={home.description} />
-            </picture>
+            <Link onClick={() => handleUpdateClick(home.id)} to={`/boliger/${home.id}`}>
+              <picture>
+                <img src={home.images[1].filename.medium} alt={home.description} />
+              </picture>
+            </Link>
             <figcaption>
               <h3>{home.address}</h3>
               <p>
